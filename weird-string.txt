@@ -1,0 +1,39 @@
+        public static void weirdString(string sentence = " ")
+        {
+            if (sentence.Length == 0)
+            {
+                Console.WriteLine("Error");
+            }
+            else
+            {
+
+                string code = sentence;
+                List<string> list = new List<string>();
+                StringBuilder wordPart = new StringBuilder();
+                string[] w = code.Split(' ');
+
+
+                for (int item = 0; item < w.Length; item++)
+                {
+                    wordPart = new StringBuilder(w[item]);
+                    for (int i = 0; i < w[item].Length; i++)
+                    {
+
+                        if (i % 2 == 0)
+                        {
+                            wordPart[i] = Char.ToUpper(wordPart[i]);
+                        }
+                    }
+                    string answer = wordPart.ToString();
+                    list.Add(answer);
+                }
+
+                wordPart.Clear();
+                foreach (string item in list)
+                {
+                    wordPart.Append(item);
+                    wordPart.Append(" ");
+                }
+                Console.WriteLine(wordPart);
+            }
+        }
