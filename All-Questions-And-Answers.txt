@@ -1,0 +1,391 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace questions
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            //reversString("himesh");
+            //weirdString("");
+            //sevenFiveSequence(2000,3200);
+            //findFactorial(8);
+            //Console.WriteLine(recursiveFactorial(4));
+            //dictionaryFactorial(8);
+            //consoleToList();
+            //calculateSquareRoot();
+            // generateMetrix();
+            // removeDuplicateWords();
+            // binaryToInteger();
+            //digitCheck(1000,3000);
+
+
+
+            // Console.WriteLine(Convert.ToInt16("a"));
+            //calculateOfUpperAndLower();
+            //findOddNumbers();
+            transactionLog();
+
+
+
+
+
+
+
+        }
+
+        public static string getConsole()
+        {
+            Console.WriteLine("Enter a Sentence ? ");
+            string senetens = Console.ReadLine();
+            return senetens;
+        }
+        public static void reversString(string name)
+        {
+            List<char> revers = new List<char>();
+            for (int i = 0; i < name.Length; i++)
+            {
+                revers.Add(name[i]);
+            }
+            revers.Reverse();
+            String answer = new String(revers.ToArray());
+            Console.WriteLine(answer);
+        }
+
+        public static void weirdString(string sentence = " ")
+        {
+            if (sentence.Length == 0)
+            {
+                Console.WriteLine("Error");
+            }
+            else
+            {
+
+                string code = sentence;
+                List<string> list = new List<string>();
+                StringBuilder wordPart = new StringBuilder();
+                string[] w = code.Split(' ');
+
+
+                for (int item = 0; item < w.Length; item++)
+                {
+                    wordPart = new StringBuilder(w[item]);
+                    for (int i = 0; i < w[item].Length; i++)
+                    {
+
+                        if (i % 2 == 0)
+                        {
+                            wordPart[i] = Char.ToUpper(wordPart[i]);
+                        }
+                    }
+                    string answer = wordPart.ToString();
+                    list.Add(answer);
+                }
+
+                wordPart.Clear();
+                foreach (string item in list)
+                {
+                    wordPart.Append(item);
+                    wordPart.Append(" ");
+                }
+                Console.WriteLine(wordPart);
+            }
+        }
+
+        public static void sevenFiveSequence(int startPoint, int endpoint)
+        {
+
+            for (int i = startPoint; i <= endpoint; i++)
+            {
+                if (i % 7 == 0 & i % 5 != 0)
+                {
+                    Console.Write(i + ",");
+
+                }
+            }
+        }
+
+        public static void findFactorial(int number)
+        {
+            int factorial = 1;
+            for (int num = 1; num <= number; num++)
+            {
+                factorial *= num;
+            }
+            Console.WriteLine(factorial);
+        }
+
+        public static int recursiveFactorial(int number)
+        {
+            int facetorial = 0;
+            if (number == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                facetorial = number * recursiveFactorial(number - 1);
+
+            }
+            return facetorial;
+        }
+
+        public static void dictionaryFactorial(int number){
+
+            Dictionary<int, int> list = new Dictionary<int, int>();
+
+            for(int i = 1; i <= number; i++)
+            {
+                list.Add(i, i * i);
+            }
+
+            foreach(var pair in list)
+            {
+                Console.WriteLine("{0}:{1}",pair.Key,pair.Value);
+            }
+
+        }
+
+        public static void consoleToList()
+        {
+            Console.WriteLine("Enter a sequesnce of comma seperated numbers ");
+            string numberList = Console.ReadLine();
+            string[] numbers = numberList.Split(',');
+
+            foreach(string item in numbers)
+            {
+                int num = Convert.ToInt16(item);
+                Console.WriteLine(num);
+            }
+        }
+
+        public static void calculateSquareRoot()
+        {
+            Console.WriteLine("Enter a sequence of comma seperated numbers");
+
+            try
+            {
+                string numberSequence = Console.ReadLine();
+                string[] numbers = numberSequence.Split(',');
+                double result = 0;
+                const int C = 50;
+                const int H = 30;
+                foreach (string value in numbers)
+                {
+                    int num = Convert.ToInt16(value);
+                    double formula = (2 * C * num) / H;
+                    result = Math.Sqrt(formula);
+                    Console.WriteLine(result);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+
+        public static void generateMetrix()
+        {
+
+            Console.WriteLine("Enter X Value");
+            int xvalue = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter Y Value");
+            int yvalue = Convert.ToInt32(Console.ReadLine());
+
+            int[,] metrix = new int[xvalue,yvalue];
+
+            for(int i = 0; i<xvalue; i++)
+            {
+                for(int j = 0; j < yvalue; j++)
+                {
+                    Console.Write(i * j + ",");
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+        public static void removeDuplicateWords()
+        {
+            Console.WriteLine("Enter a sequence of whitespace sepereted String");
+            string[] nameList = Console.ReadLine().Split(' ');
+            StringBuilder answer = new StringBuilder();
+            for(int index = 0; index < nameList.Length; index++)
+            {
+                string word = nameList[index];
+                for(int item =0; item< nameList.Length; item++)
+                {
+                    if(index != item)
+                    {
+                        if (word.Equals(nameList[item]))
+                        {
+                            nameList[item] = "";
+                        }
+                    }
+
+                }
+                answer.Append(word);
+                answer.Append(" ");              
+            }
+
+            Console.WriteLine(answer);                     
+        }
+
+        public static void binaryToInteger()
+        {
+            
+
+            Console.WriteLine("Enter a sequence of comma sepereated 4 digit numbers");
+            string[] numberList = Console.ReadLine().Split(',');
+
+            foreach(string number in numberList)
+            {
+                if(Convert.ToInt32(number,2) % 5 == 0)
+                {
+                    Console.WriteLine(number);
+                }
+            }
+        }
+
+        public static void digitCheck(int startPoint, int endPoint)
+        {
+            
+            StringBuilder resultString = new StringBuilder();
+            for(int index = startPoint; index <= endPoint;index++)
+            {
+                string number = Convert.ToString(index);
+                if(Convert.ToInt16(number[0]) % 2 == 0 & Convert.ToInt16(number[1]) % 2 == 0 & Convert.ToInt16(number[2]) % 2 == 0 & Convert.ToInt16(number[3]) % 2 == 0)
+                {
+                    resultString.Append(number);
+                    resultString.Append(',');
+                }
+            }
+
+            Console.WriteLine(resultString);
+
+           
+
+            
+        }
+
+        public static void numberOfDigitandLetters()
+        {
+            Console.WriteLine("Enther the valid string");
+            string line = Console.ReadLine();
+            line.Trim();
+            int digit = 0;
+            int letters = 0;
+            for (int index = 0; index < line.Length; index++)
+            {
+                try
+                {
+                    Convert.ToInt16(line[index].ToString());
+                    digit++;
+                }
+                catch
+                {
+                    letters++;
+                }
+            }
+            Console.WriteLine(letters);
+            Console.WriteLine(digit);
+        }
+
+        public static void calculateOfUpperAndLower()
+        {
+            Console.WriteLine("Enter a Sentence ? ");
+            string senetens  = Console.ReadLine();
+            int numUppercase = 0;
+            int numLowercase = 0;
+            
+            for(int letterIndex = 0; letterIndex < senetens.Length; letterIndex++)
+            {
+                int utfCode = Convert.ToInt16(senetens[letterIndex]);
+                if(utfCode >= 65 && utfCode  <= 90)
+                {
+                    numUppercase++;
+                }
+                else if(utfCode >= 97 && utfCode <= 122)
+                {
+                    numLowercase++;
+                }
+                
+                
+            }
+            
+
+            Console.WriteLine("Number of Uppercase Letters : {0}",numUppercase);
+            Console.WriteLine("Number of Lowercase Letters : {0}",numLowercase);
+        }
+
+        public static void findOddNumbers()
+        {
+            string[] stentense = getConsole().Split(',');
+            StringBuilder answer = new StringBuilder();
+            for(int index = 0; index < stentense.Length; index++)
+            {
+                try
+                {
+                    if(Convert.ToInt16(stentense[index]) % 2 != 0)
+                    {
+                        answer.Append(stentense[index]);
+                        answer.Append(",");
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Enter Numbers Only");
+                }
+            }
+
+            Console.WriteLine(answer);
+        }
+
+        public static void transactionLog()
+        {
+            bool key = true;
+            double currentTotal = 1000.00;
+            while (key)
+            {
+                Console.WriteLine("Enter the log");
+                Console.WriteLine("Enter End to view the transaction");
+                string log = Console.ReadLine().ToLower();
+
+                if (log.Equals("end"))
+                {
+                    key = false;
+                }
+                else
+                {
+                    string[] transaction = log.Split(' ');
+                    if (transaction[0].Equals("d"))
+                    {
+                        currentTotal += Convert.ToDouble(transaction[1]);
+                    }
+                    else if (transaction[0].Equals("w"))
+                    {
+                        currentTotal -= Convert.ToDouble(transaction[1]);
+                    }
+                    
+                }
+            }
+
+            Console.WriteLine(currentTotal);
+        }
+
+        public  
+       }
+        
+
+    
+}
